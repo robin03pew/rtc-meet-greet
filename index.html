@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Region Tullnerfeld Cup — Meet &amp; Greet</title>
+  <meta name="description" content="Interaktive Live-Event Präsentation für den Region Tullnerfeld Cup — Namenraten &amp; Gruppenauslosung." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ======================== VIEW INDICATOR ======================== -->
+  <div id="view-indicator" class="view-indicator">
+    <span id="view-indicator-text">CHALLENGE</span>
+  </div>
+
+  <!-- ======================== VIEW 1: CHALLENGE ======================== -->
+  <div id="challenge-view" class="view active">
+    <div class="challenge-grid">
+      <!-- -------- PLAYER 1 (LEFT) -------- -->
+      <div class="player-column player-column--left">
+        <div class="player-avatar" id="p1-avatar">
+          <img src="assets/eisenschenk.png" alt="Spieler 1 Karikatur" class="avatar-img" />
+        </div>
+        <div class="player-name-tag" id="p1-name-tag">Eisenschenk</div>
+        <div class="score-display" id="p1-score">
+          <span class="score-number" id="p1-score-num">0</span>
+        </div>
+        <div class="guessed-list-wrapper">
+          <div class="guessed-list-title">Erraten</div>
+          <ul class="guessed-list" id="p1-guessed"></ul>
+        </div>
+      </div>
+
+      <!-- -------- CENTER COLUMN -------- -->
+      <div class="center-column">
+        <div class="center-top">
+          <img src="assets/logo_gr_new.png" alt="Region Tullnerfeld Cup Logo" class="rtc-logo" />
+          <h1 class="challenge-title">NAMEN<span class="accent">CHALLENGE</span></h1>
+          <p class="challenge-subtitle">Wer kennt den ÖFB-Kader für die WM 2026?</p>
+        </div>
+
+        <div class="input-area">
+          <div class="search-wrapper" id="search-wrapper">
+            <input
+              type="text"
+              id="name-input"
+              class="name-input"
+              placeholder="Spielername eingeben…"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <div class="autocomplete-ghost" id="autocomplete-ghost"></div>
+            <div class="autocomplete-hint" id="autocomplete-hint"></div>
+          </div>
+
+          <div class="point-buttons">
+            <button class="btn-point btn-point--p1" id="btn-p1">
+              <span class="btn-arrow">◀</span> Punkt P1
+            </button>
+            <button class="btn-point btn-point--p2" id="btn-p2">
+              Punkt P2 <span class="btn-arrow">▶</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Jersey Animation Overlay -->
+        <div class="jersey-animation" id="jersey-animation">
+          <div class="jersey-shape" id="jersey-shape">
+            <svg viewBox="0 0 200 240" class="jersey-svg">
+              <!-- Jersey body (Austrian red) -->
+              <path d="M40,60 L20,80 L20,100 L40,90 L40,220 C40,230 50,240 60,240 L140,240 C150,240 160,230 160,220 L160,90 L180,100 L180,80 L160,60 L140,40 C130,30 120,25 100,25 C80,25 70,30 60,40 Z"
+                    fill="#c8102e" stroke="#e0223f" stroke-width="1.5"/>
+              <!-- White collar -->
+              <path d="M80,30 Q100,50 120,30" fill="none" stroke="#fff" stroke-width="3"/>
+              <!-- Sleeve cuffs -->
+              <line x1="20" y1="98" x2="40" y2="88" stroke="#fff" stroke-width="3"/>
+              <line x1="180" y1="98" x2="160" y2="88" stroke="#fff" stroke-width="3"/>
+              <!-- Subtle vertical stripes -->
+              <line x1="70" y1="90" x2="70" y2="220" stroke="rgba(255,255,255,0.06)" stroke-width="12"/>
+              <line x1="100" y1="80" x2="100" y2="230" stroke="rgba(255,255,255,0.06)" stroke-width="12"/>
+              <line x1="130" y1="90" x2="130" y2="220" stroke="rgba(255,255,255,0.06)" stroke-width="12"/>
+            </svg>
+            <div class="jersey-name" id="jersey-name"></div>
+            <div class="jersey-glow"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- -------- PLAYER 2 (RIGHT) -------- -->
+      <div class="player-column player-column--right">
+        <div class="player-avatar" id="p2-avatar">
+          <img src="assets/heinreichsberger.png" alt="Spieler 2 Karikatur" class="avatar-img" />
+        </div>
+        <div class="player-name-tag" id="p2-name-tag">Heinreichsberger</div>
+        <div class="score-display" id="p2-score">
+          <span class="score-number" id="p2-score-num">0</span>
+        </div>
+        <div class="guessed-list-wrapper">
+          <div class="guessed-list-title">Erraten</div>
+          <ul class="guessed-list" id="p2-guessed"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== VIEW 2: GROUP DRAW ======================== -->
+  <div id="group-draw-view" class="view">
+    <div class="draw-container">
+      <img src="assets/logo_gr_new.png" alt="Region Tullnerfeld Cup Logo" class="rtc-logo rtc-logo--draw" />
+      <h1 class="draw-title">GRUPPEN<span class="accent">AUSLOSUNG</span></h1>
+      <p class="draw-subtitle">Turnier Gruppenphase</p>
+
+      <div class="groups-grid" id="groups-grid">
+        <!-- Groups A–D generated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
