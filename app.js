@@ -5,93 +5,105 @@
 // ---- Austrian National Team Squad (WM 2026) ----
 
 const SQUAD = [
-  "Alexander Schlager",
-  "Tobias Lawal",
-  "Patrick Pentz",
-  "Florian Wiegele",
-  "Kevin Danso",
-  "Marco Friedl",
-  "Philipp Lienhart",
-  "David Affengruber",
-  "Stefan Posch",
-  "David Alaba",
-  "Maximilian Wöber",
-  "Michael Svoboda",
-  "Phillipp Mwene",
-  "Konrad Laimer",
-  "Nicolas Seiwald",
-  "Florian Grillitsch",
-  "Carney Chukwuemeka",
-  "Xaver Schlager",
-  "Marcel Sabitzer",
-  "Alessandro Schöpf",
-  "Alexander Prass",
-  "Christoph Baumgartner",
-  "Paul Wanner",
-  "Romano Schmid",
-  "Patrick Wimmer",
-  "Marko Arnautovic",
-  "Sasa Kalajdzic",
-  "Michael Gregoritsch",
+  { number: 1, name: "Alexander Schlager" },
+  { number: 2, name: "David Affengruber" },
+  { number: 3, name: "Kevin Danso" },
+  { number: 4, name: "Xaver Schlager" },
+  { number: 5, name: "Stefan Posch" },
+  { number: 6, name: "Nicolas Seiwald" },
+  { number: 7, name: "Marko Arnautovic" },
+  { number: 8, name: "David Alaba" },
+  { number: 9, name: "Marcel Sabitzer" },
+  { number: 10, name: "Florian Grillitsch" },
+  { number: 11, name: "Michael Gregoritsch" },
+  { number: 12, name: "Florian Wiegele" },
+  { number: 13, name: "Patrick Pentz" },
+  { number: 14, name: "Sasa Kalajdzic" },
+  { number: 15, name: "Philipp Lienhart" },
+  { number: 16, name: "Phillipp Mwene" },
+  { number: 17, name: "Carney Chukwuemeka" },
+  { number: 18, name: "Romano Schmid" },
+  { number: 19, name: "Christoph Baumgartner" },
+  { number: 20, name: "Konrad Laimer" },
+  { number: 21, name: "Patrick Wimmer" },
+  { number: 22, name: "Alexander Prass" },
+  { number: 23, name: "Marco Friedl" },
+  { number: 24, name: "Paul Wanner" },
+  { number: 25, name: "Michael Svoboda" },
+  { number: 26, name: "Alessandro Schöpf" }
 ];
 
 // ---- Team Data for Group Draw (from vereine folder) ----
 
 const TEAMS = [
-  { name: "FC Tulln",                    logo: "assets/vereine/FC Tulln.png" },
-  { name: "SC Sitzenberg-Reidling",      logo: "assets/vereine/SC Sitzenberg Reidling.png" },
-  { name: "SK Lugus Tulbing",            logo: "assets/vereine/SK Lugus Tulbing.png" },
-  { name: 'SV "Donau" Langenlebarn',     logo: "assets/vereine/SV Langenlebarn.png" },
-  { name: "SV hb24 Viktoria Rust",       logo: "assets/vereine/SV Rust.png" },
-  { name: "SV Langenrohr",               logo: "assets/vereine/SV Langenrohr.png" },
-  { name: "SV Sieghartskirchen",          logo: "assets/vereine/SV Sieghartskirchen.png" },
-  { name: "SV Würmla",                   logo: "assets/vereine/SV Würmla Circle.png" },
-  { name: "SV Zwentendorf",              logo: "assets/vereine/SV Zwentendorf.png" },
-  { name: "USC Muckendorf / Zeiselmauer",logo: "assets/vereine/USC Muckendorf.png" },
+  { name: "FC Tulln", logo: "assets/vereine/FC Tulln.png" },
+  { name: "SC Sitzenberg-Reidling", logo: "assets/vereine/SC Sitzenberg Reidling.png" },
+  { name: "SK Lugus Tulbing", logo: "assets/vereine/SK Lugus Tulbing.png" },
+  { name: 'SV "Donau" Langenlebarn', logo: "assets/vereine/SV Langenlebarn.png" },
+  { name: "SV hb24 Viktoria Rust", logo: "assets/vereine/SV Rust.png" },
+  { name: "SV Langenrohr", logo: "assets/vereine/SV Langenrohr.png" },
+  { name: "SV Sieghartskirchen", logo: "assets/vereine/SV Sieghartskirchen.png" },
+  { name: "SV Würmla", logo: "assets/vereine/SV Würmla Circle.png" },
+  { name: "SV Zwentendorf", logo: "assets/vereine/SV Zwentendorf.png" },
+  { name: "USC Muckendorf / Zeiselmauer", logo: "assets/vereine/USC Muckendorf.png" },
   { name: "USV Atzenbrugg-Heiligeneich", logo: "assets/vereine/USV-Atzenbrugg-Heiligeneich_whitebg.png" },
-  { name: "USV St. Andrä Wördern",       logo: "assets/vereine/SV_St_Andrae_Woerdern_Logo.png" },
+  { name: "USV St. Andrä Wördern", logo: "assets/vereine/SV_St_Andrae_Woerdern_Logo.png" },
 ];
 
 // ---- Sponsor Data (from assets/sponsors/) ----
 // Each entry: { logo, name, category }
-// We skip .psd, .pdf, and non-image files; use .png/.jpg/.svg only
+// We skip .psd, .pdf, and non-image files; use .png/.jpg/.svg/.avif only
 
 const SPONSORS = [
   // Kat 1 — Main sponsors
-  { logo: "assets/sponsors/kat1/11team_puma.png",              name: "11teamsports / Puma" },
-  { logo: "assets/sponsors/kat1/baumgartner_mitsubishi.png",   name: "Baumgartner Mitsubishi" },
+  { logo: "assets/sponsors/kat1/11team_puma.png", name: "11teamsports / Puma" },
+  { logo: "assets/sponsors/kat1/baumgartner_mitsubishi.png", name: "Baumgartner Mitsubishi" },
   { logo: "assets/sponsors/kat1/logo_region_tullnerfeld_4c.png", name: "Region Tullnerfeld" },
-  { logo: "assets/sponsors/kat1/rauch_logo_schrift.png",       name: "Rauch" },
-  { logo: "assets/sponsors/kat1/trb_hialsorb.png",             name: "TRB Hialsorb" },
+  { logo: "assets/sponsors/kat1/rauch_logo_schrift.png", name: "Rauch" },
+  { logo: "assets/sponsors/kat1/trb_hialsorb.png", name: "TRB Hialsorb" },
   // Kat 2
-  { logo: "assets/sponsors/kat2/Glosara_Logo.png",             name: "Glosara" },
-  { logo: "assets/sponsors/kat2/Hummer_LOGO.jpg",              name: "Hummer" },
-  { logo: "assets/sponsors/kat2/NV_Logo_ab 2023_hoch_Offset_CMYK.jpg", name: "Niederösterreichische Versicherung" },
-  { logo: "assets/sponsors/kat2/VB_Logo_blau_digital (1).jpg", name: "Volksbank" },
-  { logo: "assets/sponsors/kat2/WB Logo 4C.jpg",               name: "Wirtschaftsbund" },
-  { logo: "assets/sponsors/kat2/im86-Logo_RGBsquare_color_3x.png", name: "im86" },
+  { logo: "assets/sponsors/kat2/Glosara_Logo_transparent.png", name: "Glosara" },
+  { logo: "assets/sponsors/kat2/Hummer_LOGO.jpg", name: "Hummer" },
+  { logo: "assets/sponsors/kat2/NV_Logo_ab 2023_hoch_Offset_CMYK_transparent.png", name: "Niederösterreichische Versicherung" },
+  { logo: "assets/sponsors/kat2/Prachner_Logo_RZ.png", name: "Prachner" },
+  { logo: "assets/sponsors/kat2/VB_Logo_blau_digital (1)_transparent.png", name: "Volksbank" },
+  { logo: "assets/sponsors/kat2/WB Logo 4C_transparent.png", name: "Wirtschaftsbund" },
+  { logo: "assets/sponsors/kat2/im86-Logo_RGBsquare_color_3x_transparent.png", name: "im86" },
   // Kat 3
   { logo: "assets/sponsors/kat3/AD_MF-LOGO-red-grey_Kombination_2022.png", name: "AD MF" },
-  { logo: "assets/sponsors/kat3/greiner.png",                  name: "Greiner" },
-  { logo: "assets/sponsors/kat3/kutech_logo_4c.png",           name: "Kutech" },
-  { logo: "assets/sponsors/kat3/logo sonnenschutzwelt.png",    name: "Sonnenschutzwelt" },
-  { logo: "assets/sponsors/kat3/ltt 01_Landtechnik_Tullnerfeld_LogoName.jpg", name: "Landtechnik Tullnerfeld" },
+  { logo: "assets/sponsors/kat3/greiner.png", name: "Greiner" },
+  { logo: "assets/sponsors/kat3/kutech_logo_4c.png", name: "Kutech" },
+  { logo: "assets/sponsors/kat3/logo sonnenschutzwelt_padded.png", name: "Sonnenschutzwelt" },
+  { logo: "assets/sponsors/kat3/ltt 01_Landtechnik_Tullnerfeld_LogoName_padded.jpg", name: "Landtechnik Tullnerfeld" },
   { logo: "assets/sponsors/kat3/tulln 01_D52.006.1_Bild-Wortmarke_V1_4c.png", name: "Stadt Tulln" },
+  { logo: "assets/sponsors/kat3/tulln 02_Tulln_ab4cm.png", name: "Stadt Tulln ab 4cm" },
   { logo: "assets/sponsors/kat3/tulln 03_Logo TullnEnergie.png", name: "Tulln Energie" },
-  { logo: "assets/sponsors/kat3/z01_NÖN Logo 2021.jpg",        name: "NÖN" },
-  { logo: "assets/sponsors/kat3/z02_ligaportal-logo.png",      name: "Ligaportal" },
+  { logo: "assets/sponsors/kat3/z01_NÖN Logo 2021.jpg", name: "NÖN" },
+  { logo: "assets/sponsors/kat3/z02_ligaportal-logo.png", name: "Ligaportal" },
   { logo: "assets/sponsors/kat3/z03_Logo_MeinBezirk_pos_CMYK.jpg", name: "MeinBezirk" },
   // Kat 4
-  { logo: "assets/sponsors/kat4/JB Hydraulik.png",             name: "JB Hydraulik" },
-  { logo: "assets/sponsors/kat4/etschuster.png",               name: "Etschuster" },
-  { logo: "assets/sponsors/kat4/logo-stiga.svg",               name: "Stiga" },
-  { logo: "assets/sponsors/kat4/thomes.png",                   name: "Thomes" },
+  { logo: "assets/sponsors/kat4/JB Hydraulik.png", name: "JB Hydraulik" },
+  { logo: "assets/sponsors/kat4/LEMA20LOGO.avif", name: "LEMA" },
+  { logo: "assets/sponsors/kat4/Logo_Glanzparaden_transparent.png", name: "Glanzparaden" },
+  { logo: "assets/sponsors/kat4/Type Hörmann TTZA - CMYK.png", name: "Hörmann" },
+  { logo: "assets/sponsors/kat4/Weichberger_Logo_hoch.jpg", name: "Weichberger" },
+  { logo: "assets/sponsors/kat4/bergerschinken-logo-2.svg", name: "Berger Schinken" },
+  { logo: "assets/sponsors/kat4/etschuster_transparent.png", name: "Etschuster" },
+  { logo: "assets/sponsors/kat4/logo-stiga.svg", name: "Stiga" },
+  { logo: "assets/sponsors/kat4/thomes.png", name: "Thomes" },
   // Kat 5
-  { logo: "assets/sponsors/kat5/akyoung.png",                  name: "AK Young" },
-  { logo: "assets/sponsors/kat5/bergerschinken-logo-2.png",    name: "Berger Schinken" },
-  { logo: "assets/sponsors/kat5/schiedsrichter.png",           name: "Schiedsrichter" },
-  { logo: "assets/sponsors/kat5/skyline.png",                  name: "Skyline" },
-  { logo: "assets/sponsors/kat5/stoerchle.png",                name: "Störchle" },
+  { logo: "assets/sponsors/kat5/02_Logo_transparent.png", name: "Sponsor 02" },
+  { logo: "assets/sponsors/kat5/Artboard 2 copy 6@3000x.png", name: "Sponsor Artboard" },
+  { logo: "assets/sponsors/kat5/Ds-Url-SignetRGBDkl-Blau Kopie.png", name: "Donau Versicherung" },
+  { logo: "assets/sponsors/kat5/Logo Weingut_transparent.png", name: "Weingut" },
+  { logo: "assets/sponsors/kat5/Logo_Schatti_JPG_transparent.png", name: "Schatti" },
+  { logo: "assets/sponsors/kat5/akyoung.png", name: "AK Young" },
+  { logo: "assets/sponsors/kat5/bergerschinken-logo-2.png", name: "Berger Schinken" },
+  { logo: "assets/sponsors/kat5/cb-marketing-logo-1080x1080.jpg", name: "CB Marketing" },
+  { logo: "assets/sponsors/kat5/ra-logo_transparent.png", name: "RA-Logo" },
+  { logo: "assets/sponsors/kat5/schiedsrichter.png", name: "Schiedsrichter" },
+  { logo: "assets/sponsors/kat5/skyline.png", name: "Skyline" },
+  { logo: "assets/sponsors/kat5/stoerchle.png", name: "Störchle" },
 ];
 
 const SPONSOR_INTERVAL = 8000; // 8 seconds per sponsor
@@ -148,6 +160,7 @@ const els = {
   p2Guessed: $('p2-guessed'),
   jerseyAnim: $('jersey-animation'),
   jerseyName: $('jersey-name'),
+  jerseyNumber: $('jersey-number'),
   groupsGrid: $('groups-grid'),
   sponsorLogoWrapper: $('sponsor-logo-wrapper'),
   sponsorLabel: $('sponsor-label'),
@@ -205,6 +218,20 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'S' && e.shiftKey) {
     e.preventDefault();
     cycleView();
+    return;
+  }
+
+  // Export groups as Instagram image with Shift+J
+  if (e.key === 'J' && e.shiftKey) {
+    e.preventDefault();
+    exportGroupsAsImage();
+    return;
+  }
+
+  // Randomly fill groups with Shift+R (for testing)
+  if (e.key === 'R' && e.shiftKey) {
+    e.preventDefault();
+    fillGroupsRandomly();
     return;
   }
 
@@ -312,7 +339,7 @@ function stopSponsorCarousel() {
 // ---- Autocomplete Logic ----
 
 function getAvailableNames() {
-  return SQUAD.filter(n => !state.usedNames.has(n));
+  return SQUAD.map(p => p.name).filter(n => !state.usedNames.has(n));
 }
 
 // Format a name as "Firstname Lastname"
@@ -513,7 +540,13 @@ function showJerseyAnimation(name, player) {
   // Show only the player's last name on the jersey
   const parts = name.split(' ');
   const lastName = parts[parts.length - 1];
+
+  // Find the player's number
+  const playerObj = SQUAD.find(p => p.name === name);
+  const number = playerObj ? playerObj.number : '';
+
   els.jerseyName.textContent = lastName;
+  if (els.jerseyNumber) els.jerseyNumber.textContent = number;
 
   // Reset classes
   els.jerseyAnim.className = 'jersey-animation';
@@ -658,7 +691,7 @@ function attachDropdownListeners() {
     slot.innerHTML = `
       <span class="slot-number">${index + 1}</span>
       <div class="slot-filled" data-group="${group}" data-index="${index}">
-        ${logoSrc ? `<img class="slot-team-badge" src="${logoSrc}" alt="${teamName}" />` : ''}
+        ${logoSrc ? `<div class="slot-team-badge-container"><img class="slot-team-badge" src="${logoSrc}" alt="${teamName}" /></div>` : ''}
         <span class="slot-team-name">${teamName}</span>
         <span class="slot-change-icon" title="Ändern">✎</span>
       </div>
@@ -698,6 +731,180 @@ function attachDropdownListeners() {
     const sel = slot.querySelector('select');
     if (sel) sel.focus();
   });
+}
+
+// ---- Instagram Export (Shift+J) ----
+
+function buildExportContent() {
+  const exportGroups = document.getElementById('export-groups');
+  exportGroups.innerHTML = '';
+
+  const groupKeys = ['A', 'B', 'C', 'D'];
+
+  groupKeys.forEach(letter => {
+    const card = document.createElement('div');
+    card.className = 'export-group-card';
+
+    let teamsHTML = '';
+    for (let i = 0; i < 3; i++) {
+      const teamName = state.groups[letter][i];
+      const team = teamName ? findTeam(teamName) : null;
+
+      if (team) {
+        teamsHTML += `
+          <div class="export-team-entry">
+            <div class="export-logo-container">
+              <img src="${team.logo}" alt="${teamName}" />
+            </div>
+            <span class="export-team-name">${teamName}</span>
+          </div>
+        `;
+      } else {
+        teamsHTML += `
+          <div class="export-team-entry">
+            <div class="export-logo-container export-logo-container--empty"></div>
+            <span class="export-team-name" style="color: #c8c8c8;">—</span>
+          </div>
+        `;
+      }
+    }
+
+    card.innerHTML = `
+      <div class="export-group-header">
+        <span class="export-group-label">GRUPPE ${letter}</span>
+      </div>
+      <div class="export-logos-row">${teamsHTML}</div>
+    `;
+
+    exportGroups.appendChild(card);
+  });
+}
+
+function exportGroupsAsImage() {
+  // Check if html2canvas is available
+  if (typeof html2canvas === 'undefined') {
+    console.error('html2canvas not loaded');
+    return;
+  }
+
+  // Build the export content from current state
+  buildExportContent();
+
+  const container = document.getElementById('export-container');
+
+  // Move container onscreen but behind everything (active views have z-index:10)
+  // Do NOT set opacity:0 — html2canvas needs the element fully visible to capture it
+  container.style.top = '0';
+  container.style.left = '0';
+  container.style.zIndex = '-1';
+
+  // Double-rAF ensures the browser has fully painted the container
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      html2canvas(container, {
+        width: 1080,
+        height: 1350,
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#f5f5f5',
+        logging: false,
+      }).then(canvas => {
+        // Move container back offscreen
+        container.style.top = '-99999px';
+        container.style.left = '-99999px';
+        container.style.zIndex = '';
+
+        // Export as PNG via Blob
+        canvas.toBlob((blob) => {
+          if (!blob) {
+            console.error('Export failed: Could not create blob from canvas.');
+            return;
+          }
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          const now = new Date();
+          const dateStr = now.toISOString().slice(0, 10);
+          const timeStr = now.toTimeString().slice(0, 8).replace(/:/g, '-');
+          link.download = `RTC_Gruppenauslosung_${dateStr}_${timeStr}.png`;
+          link.href = url;
+          link.click();
+          URL.revokeObjectURL(url);
+
+          // Visual feedback: white flash
+          const flash = document.createElement('div');
+          flash.className = 'export-flash';
+          document.body.appendChild(flash);
+          setTimeout(() => flash.remove(), 600);
+
+          console.log('Export saved as PNG (high resolution)');
+        }, 'image/png');
+      }).catch(err => {
+        // Move container back offscreen on error
+        container.style.top = '-99999px';
+        container.style.left = '-99999px';
+        container.style.zIndex = '';
+        console.error('Export failed:', err);
+      });
+    });
+  });
+}
+
+function fillGroupsRandomly() {
+  // Clear any existing groups assignment
+  state.assignedTeams.clear();
+  const groupKeys = ['A', 'B', 'C', 'D'];
+  groupKeys.forEach(letter => {
+    state.groups[letter] = [null, null, null];
+  });
+
+  // Shuffle teams using Fisher-Yates
+  const shuffledTeams = shuffleArray(TEAMS);
+
+  // Assign them
+  let teamIdx = 0;
+  groupKeys.forEach(letter => {
+    for (let i = 0; i < 3; i++) {
+      if (teamIdx < shuffledTeams.length) {
+        const team = shuffledTeams[teamIdx];
+        state.groups[letter][i] = team.name;
+        state.assignedTeams.add(team.name);
+        teamIdx++;
+      }
+    }
+  });
+
+  // Update DOM slots
+  groupKeys.forEach(letter => {
+    for (let i = 0; i < 3; i++) {
+      const slot = document.getElementById(`slot-${letter}-${i}`);
+      if (!slot) continue;
+
+      const teamName = state.groups[letter][i];
+      const team = teamName ? findTeam(teamName) : null;
+      if (team) {
+        slot.innerHTML = `
+          <span class="slot-number">${i + 1}</span>
+          <div class="slot-filled" data-group="${letter}" data-index="${i}">
+            <div class="slot-team-badge-container">
+              <img class="slot-team-badge" src="${team.logo}" alt="${teamName}" />
+            </div>
+            <span class="slot-team-name">${teamName}</span>
+            <span class="slot-change-icon" title="Ändern">✎</span>
+          </div>
+        `;
+      } else {
+        slot.innerHTML = `
+          <span class="slot-number">${i + 1}</span>
+          <select data-group="${letter}" data-index="${i}">
+            <option value="">Verein wählen…</option>
+          </select>
+        `;
+      }
+    }
+  });
+
+  refreshAllDropdowns();
 }
 
 // ---- Initialize ----

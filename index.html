@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Region Tullnerfeld Cup — Meet &amp; Greet</title>
-  <meta name="description" content="Interaktive Live-Event Präsentation für den Region Tullnerfeld Cup — Namenraten &amp; Gruppenauslosung." />
+  <meta name="description"
+    content="Interaktive Live-Event Präsentation für den Region Tullnerfeld Cup — Namenraten &amp; Gruppenauslosung." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <!-- ======================== VIEW INDICATOR ======================== -->
   <div id="view-indicator" class="view-indicator">
@@ -44,14 +48,8 @@
 
         <div class="input-area">
           <div class="search-wrapper" id="search-wrapper">
-            <input
-              type="text"
-              id="name-input"
-              class="name-input"
-              placeholder="Spielername eingeben…"
-              autocomplete="off"
-              spellcheck="false"
-            />
+            <input type="text" id="name-input" class="name-input" placeholder="Spielername eingeben…" autocomplete="off"
+              spellcheck="false" />
             <div class="autocomplete-ghost" id="autocomplete-ghost"></div>
             <div class="autocomplete-hint" id="autocomplete-hint"></div>
           </div>
@@ -73,50 +71,57 @@
               <defs>
                 <!-- Austrian flag gradient for horizontal band -->
                 <linearGradient id="austriaGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#c8102e"/>
-                  <stop offset="33%" stop-color="#c8102e"/>
-                  <stop offset="33%" stop-color="#ffffff"/>
-                  <stop offset="66%" stop-color="#ffffff"/>
-                  <stop offset="66%" stop-color="#c8102e"/>
-                  <stop offset="100%" stop-color="#c8102e"/>
+                  <stop offset="0%" stop-color="#c8102e" />
+                  <stop offset="33%" stop-color="#c8102e" />
+                  <stop offset="33%" stop-color="#ffffff" />
+                  <stop offset="66%" stop-color="#ffffff" />
+                  <stop offset="66%" stop-color="#c8102e" />
+                  <stop offset="100%" stop-color="#c8102e" />
                 </linearGradient>
                 <!-- Shine highlight -->
                 <linearGradient id="jerseyShine" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="rgba(255,255,255,0.15)"/>
-                  <stop offset="50%" stop-color="rgba(255,255,255,0)"/>
-                  <stop offset="100%" stop-color="rgba(255,255,255,0.08)"/>
+                  <stop offset="0%" stop-color="rgba(255,255,255,0.15)" />
+                  <stop offset="50%" stop-color="rgba(255,255,255,0)" />
+                  <stop offset="100%" stop-color="rgba(255,255,255,0.08)" />
                 </linearGradient>
                 <!-- Shadow for depth -->
                 <filter id="jerseyDropShadow">
-                  <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,0.35)"/>
+                  <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,0.35)" />
                 </filter>
               </defs>
               <!-- Jersey body -->
-              <path d="M40,65 L15,85 L15,108 L42,95 L42,230 C42,240 52,250 65,250 L135,250 C148,250 158,240 158,230 L158,95 L185,108 L185,85 L160,65 L142,42 C132,32 120,26 100,26 C80,26 68,32 58,42 Z"
-                    fill="#c8102e" filter="url(#jerseyDropShadow)"/>
+              <path
+                d="M40,65 L15,85 L15,108 L42,95 L42,230 C42,240 52,250 65,250 L135,250 C148,250 158,240 158,230 L158,95 L185,108 L185,85 L160,65 L142,42 C132,32 120,26 100,26 C80,26 68,32 58,42 Z"
+                fill="#c8102e" filter="url(#jerseyDropShadow)" />
               <!-- White horizontal band (Austrian flag) -->
-              <rect x="42" y="120" width="116" height="45" fill="#ffffff" rx="0"/>
+              <rect x="42" y="120" width="116" height="45" fill="#ffffff" rx="0" />
               <!-- Collar V-shape -->
-              <path d="M78,30 L100,55 L122,30" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M78,30 L100,55 L122,30" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"
+                stroke-linejoin="round" />
               <!-- Collar inner -->
-              <path d="M82,32 L100,50 L118,32" fill="none" stroke="rgba(200,16,46,0.3)" stroke-width="1" stroke-linecap="round"/>
+              <path d="M82,32 L100,50 L118,32" fill="none" stroke="rgba(200,16,46,0.3)" stroke-width="1"
+                stroke-linecap="round" />
               <!-- Left sleeve cuff -->
-              <line x1="15" y1="106" x2="42" y2="93" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="15" y1="106" x2="42" y2="93" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" />
               <!-- Right sleeve cuff -->
-              <line x1="185" y1="106" x2="158" y2="93" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="185" y1="106" x2="158" y2="93" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" />
               <!-- Bottom hem -->
-              <line x1="65" y1="248" x2="135" y2="248" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="65" y1="248" x2="135" y2="248" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" />
               <!-- Shine overlay -->
-              <path d="M40,65 L15,85 L15,108 L42,95 L42,230 C42,240 52,250 65,250 L135,250 C148,250 158,240 158,230 L158,95 L185,108 L185,85 L160,65 L142,42 C132,32 120,26 100,26 C80,26 68,32 58,42 Z"
-                    fill="url(#jerseyShine)" opacity="0.5"/>
+              <path
+                d="M40,65 L15,85 L15,108 L42,95 L42,230 C42,240 52,250 65,250 L135,250 C148,250 158,240 158,230 L158,95 L185,108 L185,85 L160,65 L142,42 C132,32 120,26 100,26 C80,26 68,32 58,42 Z"
+                fill="url(#jerseyShine)" opacity="0.5" />
               <!-- Subtle seam lines -->
-              <line x1="100" y1="55" x2="100" y2="250" stroke="rgba(0,0,0,0.04)" stroke-width="1" stroke-dasharray="4,6"/>
-              <line x1="70" y1="95" x2="70" y2="245" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-              <line x1="130" y1="95" x2="130" y2="245" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <line x1="100" y1="55" x2="100" y2="250" stroke="rgba(0,0,0,0.04)" stroke-width="1"
+                stroke-dasharray="4,6" />
+              <line x1="70" y1="95" x2="70" y2="245" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              <line x1="130" y1="95" x2="130" y2="245" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
               <!-- ÖFB shield placeholder -->
-              <circle cx="100" cy="100" r="12" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+              <circle cx="100" cy="100" r="12" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)"
+                stroke-width="1" />
             </svg>
             <div class="jersey-name" id="jersey-name"></div>
+            <div class="jersey-number" id="jersey-number"></div>
             <div class="jersey-glow"></div>
           </div>
         </div>
@@ -163,31 +168,27 @@
 
         <div class="agenda">
           <div class="agenda-item">
-            <span class="agenda-time">16:00</span>
+            <span class="agenda-time" style="white-space: nowrap;">16:00 - 16:30</span>
             <div class="agenda-content">
-              <span class="agenda-title">Podiumsdiskussion</span>
-              <span class="agenda-desc">Fußball Sommer 2026 — moderiert von Andi Gröbl</span>
+              <span class="agenda-title">Podiumstalk</span>
             </div>
           </div>
           <div class="agenda-item">
-            <span class="agenda-time">16:45</span>
+            <span class="agenda-time" style="white-space: nowrap;">16:30 - 16:45</span>
             <div class="agenda-content">
-              <span class="agenda-title">Keynote — Dr. Thomas Arnitz</span>
-              <span class="agenda-desc">Voice-KI als Gamechanger im Amateurfußball</span>
+              <span class="agenda-title">Challange</span>
             </div>
           </div>
           <div class="agenda-item">
-            <span class="agenda-time">17:30</span>
+            <span class="agenda-time" style="white-space: nowrap;">16:50 - 17:15</span>
             <div class="agenda-content">
-              <span class="agenda-title">Namenschallenge</span>
-              <span class="agenda-desc">Wer kennt den ÖFB-Kader für die WM 2026?</span>
+              <span class="agenda-title">Keynote</span>
             </div>
           </div>
           <div class="agenda-item">
-            <span class="agenda-time">18:00</span>
+            <span class="agenda-time" style="white-space: nowrap;">17:20 - 17:45</span>
             <div class="agenda-content">
               <span class="agenda-title">Gruppenauslosung</span>
-              <span class="agenda-desc">Offizielle Ziehung der Turnier-Gruppen</span>
             </div>
           </div>
         </div>
@@ -204,7 +205,28 @@
       </div>
     </div>
   </div>
+  <!-- Hidden Export Container for Instagram (1080x1350, 4:5) -->
+  <div id="export-container" class="export-container">
+    <div class="export-bg"></div>
+    <div class="export-content">
+      <div class="export-header">
+        <img src="assets/logo_gr_new.png" alt="RTC Logo" class="export-logo" />
+        <h1 class="export-title">GRUPPEN</h1>
+        <p class="export-subtitle">Auslosung · 21. Mai 2026</p>
+      </div>
+      <div class="export-groups" id="export-groups">
+        <!-- Filled by JS -->
+      </div>
+      <div class="export-footer">
+        <div class="export-footer-line"></div>
+        <span class="export-footer-date">25. & 26. Juli 2026 · Josef Keiblinger Stadion Tulln</span>
+        <span class="export-footer-text">regiontullnerfeldcup.at</span>
+      </div>
+    </div>
+  </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="app.js"></script>
 </body>
+
 </html>
