@@ -392,13 +392,14 @@ function updateAutocomplete() {
 
   const available = getAvailableNames();
 
-  // Match by: full name starts with query, OR last name starts with query,
-  // OR any part of the name starts with query
+  // Match by checking if every part of the user's query matches the start of SOME word in the player's name
+  const queryParts = query.split(' ').filter(q => q.length > 0);
   const matches = available.filter(n => {
     const lower = n.toLowerCase();
-    if (lower.startsWith(query)) return true;
     const words = lower.split(' ');
-    return words.some(w => w.startsWith(query));
+    return queryParts.every(part => {
+      return words.some(w => w.startsWith(part));
+    });
   });
 
   if (matches.length === 1) {
@@ -408,12 +409,13 @@ function updateAutocomplete() {
     // Show ghost text that continues from what the user typed
     if (suggestion.toLowerCase().startsWith(query)) {
       els.ghost.textContent = raw + suggestion.substring(raw.length);
+      els.hint.textContent = 'Tab oder Enter zum Bestätigen';
     } else {
-      els.ghost.textContent = suggestion;
+      els.ghost.textContent = ''; // Hide ghost to prevent visual overlap
+      els.hint.textContent = `${suggestion} (Tab/Enter)`;
     }
 
     state.selectedName = match;
-    els.hint.textContent = 'Tab oder Enter zum Bestätigen';
     els.hint.classList.add('visible');
     updateButtons();
   } else if (matches.length > 1 && matches.length <= 5) {
