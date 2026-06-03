@@ -108,6 +108,27 @@ const SPONSORS = [
 
 const SPONSOR_INTERVAL = 8000; // 8 seconds per sponsor
 
+// ---- Photos Data (from assets/photos/) ----
+// We pre-classify photos: isHorizontal = true for horizontal, false for vertical.
+const PHOTO_ITEMS = [
+  { url: "assets/photos/IMG_6483.JPG", isHorizontal: true },
+  { url: "assets/photos/IMG_6630.jpg", isHorizontal: false },
+  { url: "assets/photos/IMG_6798.jpg", isHorizontal: false },
+  { url: "assets/photos/IMG_6861.jpg", isHorizontal: false },
+  { url: "assets/photos/IMG_6926.jpg", isHorizontal: false },
+  { url: "assets/photos/IMG_7162.JPG", isHorizontal: true },
+  { url: "assets/photos/b1b86d9e-9ee2-4d58-a15a-19258047fe83.JPG", isHorizontal: false },
+  { url: "assets/photos/d17c6123-416c-46e4-b04b-4f23b13b34f6.JPG", isHorizontal: false },
+  { url: "assets/photos/260128_tc_kickoff-1354574.jpg", isHorizontal: true },
+  { url: "assets/photos/260128_tc_kickoff-1354730.jpg", isHorizontal: true },
+  { url: "assets/photos/260128_tc_kickoff-1354853.jpg", isHorizontal: true },
+  { url: "assets/photos/260128_tc_kickoff-1354926.jpg", isHorizontal: true },
+  { url: "assets/photos/WhatsApp Image 2026-03-14 at 17.15.22.jpeg", isHorizontal: false },
+  { url: "assets/photos/WhatsApp Image 2026-04-14 at 13.45.50.jpeg", isHorizontal: false }
+];
+
+const PHOTO_INTERVAL = 16000; // 16 seconds (double the sponsor duration of 8s)
+
 // Helper: find team by name (for Group Draw only)
 function findTeam(name) {
   return TEAMS.find(t => t.name === name);
@@ -136,6 +157,10 @@ const state = {
   currentSponsorIndex: 0,
   sponsorTimer: null,
   shuffledSponsors: [],
+  // Photo carousel
+  currentPhotoIndex: 0,
+  photoTimer: null,
+  photoSlides: [],
 };
 
 // ---- DOM Refs ----
@@ -164,6 +189,7 @@ const els = {
   groupsGrid: $('groups-grid'),
   sponsorLogoWrapper: $('sponsor-logo-wrapper'),
   sponsorLabel: $('sponsor-label'),
+  photoWrapper: $('photo-wrapper'),
 };
 
 // ---- View Toggle (3-way cycling) ----
@@ -194,11 +220,13 @@ function setView(viewName) {
   state.currentView = viewName;
   els.viewIndicator.textContent = getViewLabel(viewName);
 
-  // Start/stop sponsor carousel
+  // Start/stop sponsor and photo carousels
   if (viewName === 'screensaver') {
     startSponsorCarousel();
+    startPhotoCarousel();
   } else {
     stopSponsorCarousel();
+    stopPhotoCarousel();
   }
 
   // Focus input when switching to challenge
@@ -333,6 +361,145 @@ function stopSponsorCarousel() {
   if (state.sponsorTimer) {
     clearInterval(state.sponsorTimer);
     state.sponsorTimer = null;
+  }
+}
+
+// ---- Photo Carousel ----
+
+function preparePhotoSlides() {
+  const horizontals = PHOTO_ITEMS.filter(item => item.isHorizontal).map(item => item.url);
+  const verticals = PHOTO_ITEMS.filter(item => !item.isHorizontal).map(item => item.url);
+
+  const shuffledHorizontals = shuffleArray(horizontals);
+  const shuffledVerticals = shuffleArray(verticals);
+
+  const slides = [];
+
+  // Add all horizontals as individual slides (make them big)
+  shuffledHorizontals.forEach(url => {
+    slides.push({
+      type: 'horizontal',
+      photos: [url]
+    });
+  });
+
+  // Pair up verticals to display 2 side-by-side
+  for (let i = 0; i < shuffledVerticals.length; i += 2) {
+    if (i + 1 < shuffledVerticals.length) {
+      slides.push({
+        type: 'vertical-pair',
+        photos: [shuffledVerticals[i], shuffledVerticals[i + 1]]
+      });
+    } else {
+      // Odd vertical: pair with a random distinct one if possible, or repeat itself
+      if (shuffledVerticals.length > 1) {
+        let randomVertical = shuffledVerticals[Math.floor(Math.random() * shuffledVerticals.length)];
+        while (randomVertical === shuffledVerticals[i]) {
+          randomVertical = shuffledVerticals[Math.floor(Math.random() * shuffledVerticals.length)];
+        }
+        slides.push({
+          type: 'vertical-pair',
+          photos: [shuffledVerticals[i], randomVertical]
+        });
+      } else {
+        slides.push({
+          type: 'vertical-pair',
+          photos: [shuffledVerticals[i], shuffledVerticals[i]]
+        });
+      }
+    }
+  }
+
+  // Shuffle the slides so horizontals and vertical pairs are mixed
+  return shuffleArray(slides);
+}
+
+function showPhoto(index) {
+  const slide = state.photoSlides[index];
+  if (!slide) return;
+
+  state.currentPhotoIndex = index;
+
+  // Fade out current content (any foreground or background images)
+  const oldWrapper = els.photoWrapper;
+  const currentImgs = oldWrapper.querySelectorAll('img');
+  currentImgs.forEach(img => {
+    img.style.animation = 'photo-fade-out 0.4s ease forwards';
+  });
+
+  setTimeout(() => {
+    // Clone the wrapper to fully reset animation and progress bar
+    const newWrapper = oldWrapper.cloneNode(false);
+    newWrapper.style.setProperty('--photo-duration', PHOTO_INTERVAL + 'ms');
+
+    if (slide.type === 'horizontal') {
+      newWrapper.classList.remove('photo-wrapper--vertical-pair');
+
+      const photoUrl = slide.photos[0];
+
+      // Background blurred image
+      const bgImg = document.createElement('img');
+      bgImg.src = photoUrl;
+      bgImg.className = 'photo-bg';
+      bgImg.draggable = false;
+      newWrapper.appendChild(bgImg);
+
+      // Foreground contained image
+      const fgImg = document.createElement('img');
+      fgImg.src = photoUrl;
+      fgImg.className = 'photo-fg';
+      fgImg.draggable = false;
+      newWrapper.appendChild(fgImg);
+    } else {
+      // vertical-pair
+      newWrapper.classList.add('photo-wrapper--vertical-pair');
+
+      slide.photos.forEach(photoUrl => {
+        const half = document.createElement('div');
+        half.className = 'photo-half';
+
+        // Background blurred image
+        const bgImg = document.createElement('img');
+        bgImg.src = photoUrl;
+        bgImg.className = 'photo-bg';
+        bgImg.draggable = false;
+        half.appendChild(bgImg);
+
+        // Foreground contained image
+        const fgImg = document.createElement('img');
+        fgImg.src = photoUrl;
+        fgImg.className = 'photo-fg';
+        fgImg.draggable = false;
+        half.appendChild(fgImg);
+
+        newWrapper.appendChild(half);
+      });
+    }
+
+    oldWrapper.parentNode.replaceChild(newWrapper, oldWrapper);
+    els.photoWrapper = newWrapper;
+  }, 400);
+}
+
+function startPhotoCarousel() {
+  stopPhotoCarousel();
+  state.photoSlides = preparePhotoSlides();
+  state.currentPhotoIndex = 0;
+  showPhoto(0);
+  state.photoTimer = setInterval(() => {
+    let next = state.currentPhotoIndex + 1;
+    if (next >= state.photoSlides.length) {
+      state.photoSlides = preparePhotoSlides();
+      next = 0;
+    }
+    showPhoto(next);
+  }, PHOTO_INTERVAL);
+}
+
+function stopPhotoCarousel() {
+  if (state.photoTimer) {
+    clearInterval(state.photoTimer);
+    state.photoTimer = null;
   }
 }
 
